@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <% if (locals.allPokemon) { %>
+            <% allPokemon.map(pokemon => { %>
+                <div>
+                    <img src="<%= pokemon.img_src%>" alt="pokemon img">
+                    <p><%= pokemon.pokemon %></p>
+                    <% if (pokemon.second_type === 'none') { %>
+                        <p><%= pokemon.first_type %></p>
+                    <% } else { %>
+                        <p><%= pokemon.first_type %> <%= pokemon.second_type%></p>
+                    <% } %>
+                    <p>Nickname: <%= pokemon.nickname %></p>
+                    <p>Trainer: <%= pokemon.trainer_name%></p>
+                    <p>Status: <%= pokemon.state %></p>
+                </div>
+            <% }) %>
+        <% } %>
+    </body>
+</html>
