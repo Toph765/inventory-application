@@ -21,6 +21,67 @@ async function getAllPokemon() {
     return rows;
 };
 
+async function getAllTrainers() {
+    const { rows } = await pool.query(`SELECT * FROM trainers`);
+    
+    return rows;
+};
+
+async function getAllTypes() {
+    const { rows } = await pool.query(`SELECT * FROM types`);
+
+    return rows;
+}
+
+async function getAllStatus() {
+    const { rows } = await pool.query(`SELECT * FROM status`);
+
+    return rows;
+}
+
+async function getTrainerIdByName(name) {
+    const trainerList = await getAllTrainers();
+    const trainer = trainerList.filter(trainer => trainer.name === name)[0];
+    return trainer.trainer_id;
+}
+
+async function getStatusIdbyState(state) {
+    const statusList = await getAllStatus();
+    const status = statusList.filter(status => status.state === state)[0];
+    return status.status_id;
+}
+
+async function getTypeIdByType(type) {
+    const typeList = await getAllTypes();
+    const typeName = typeList.filter(item => item.type === type)[0];
+    return typeName.type_id;
+}
+
+async function addPokemontoDb(newPokemon) {
+    const trainerId = await getTrainerIdByName(newPokemon.trainer);
+    const statusId = await getStatusIdbyState(newPokemon.status);
+    const firstTypeId = await getTypeIdByType(newPokemon.type_one);
+    const secondTypeId = await getTypeIdByType(newPokemon.type_two);
+
+    console.log(trainerId, statusId, firstTypeId, secondTypeId);
+
+    await pool.query(`
+    INSERT INTO pokemon (pokemon, nickname, img_src, trainer_id, status_id, type_id_one, type_id_two)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)`, [
+        newPokemon.pokemon,
+        newPokemon.nickname,
+        newPokemon.img_src,
+        trainerId,
+        statusId,
+        firstTypeId,
+        secondTypeId,
+    ]);
+}
+
 module.exports = {
     getAllPokemon,
+    getAllTrainers,
+    getAllTypes,
+    getAllStatus,
+    addPokemontoDb,
 }
