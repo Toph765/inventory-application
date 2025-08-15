@@ -1,4 +1,4 @@
-const db = require('../db/indexQueries');
+const db = require('../db/queries');
 
 async function getAllPokemonGet(req, res) {
     const allPokemon = await db.getAllPokemon();
