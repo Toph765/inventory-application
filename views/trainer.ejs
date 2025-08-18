@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title><%= title%></title>
+    </head>
+    <body>
+        <% if (locals.trainers) { %>
+            <% trainers.map(trainer => { %>
+                <div>
+                    <p><%= trainer.trainer %></p>
+                    <ul>
+                        <% trainer.pokeList.map(poke => { %>
+                            <li><%= poke.pokemon %> - <%= poke.nickname %> - <%= poke.state %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% }) %>
+        <% } %>
+    </body>
+</html>
