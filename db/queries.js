@@ -111,6 +111,12 @@ async function addTrainerToDb(name) {
     `, [name]);
 };
 
+async function deletePokemon(id) {
+    await pool.query(`
+        DELETE FROM pokemon WHERE pokemon_id = $1
+    `, [id]);
+}
+
 module.exports = {
     getAllPokemon,
     getAllTrainers,
@@ -119,4 +125,5 @@ module.exports = {
     addPokemontoDb,
     getAllTrainerPokelist,
     addTrainerToDb,
+    deletePokemon,
 }
