@@ -104,6 +104,13 @@ async function getPokeList(id) {
     return rows;
 }
 
+async function addTrainerToDb(name) {
+    await pool.query(`
+        INSERT INTO trainers (name)
+        VALUES ($1)
+    `, [name]);
+};
+
 module.exports = {
     getAllPokemon,
     getAllTrainers,
@@ -111,4 +118,5 @@ module.exports = {
     getAllStatus,
     addPokemontoDb,
     getAllTrainerPokelist,
+    addTrainerToDb,
 }
