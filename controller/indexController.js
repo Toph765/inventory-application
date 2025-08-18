@@ -38,8 +38,19 @@ async function addNewPokemonPost(req, res) {
     res.redirect('/');
 }
 
+async function deletePokemonPost(req, res) {
+    const { id } = req.params;
+
+    await db.deletePokemon(id);
+
+    console.log(await db.getAllPokemon());
+
+    res.redirect('/');
+}
+
 module.exports = {
     getAllPokemonGet,
     addNewPokemonGet,
     addNewPokemonPost,
+    deletePokemonPost,
 }
