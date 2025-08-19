@@ -43,8 +43,6 @@ async function deletePokemonPost(req, res) {
 
     await db.deletePokemon(id);
 
-    console.log(await db.getAllPokemon());
-
     res.redirect('/');
 }
 

@@ -63,8 +63,6 @@ async function addPokemontoDb(newPokemon) {
     const firstTypeId = await getTypeIdByType(newPokemon.type_one);
     const secondTypeId = await getTypeIdByType(newPokemon.type_two);
 
-    console.log(trainerId, statusId, firstTypeId, secondTypeId);
-
     await pool.query(`
     INSERT INTO pokemon (pokemon, nickname, img_src, trainer_id, status_id, type_id_one, type_id_two)
     VALUES ($1, $2, $3, $4, $5, $6, $7)`, [
