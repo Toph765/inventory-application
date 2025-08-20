@@ -12,6 +12,13 @@
                             <li><%= poke.pokemon %> - <%= poke.nickname %> - <%= poke.state %></li>
                         <% }) %>
                     </ul>
+                    <form action="/trainer/<%= trainer.trainer_id %>/delete" method="post">
+                        <% if (trainer.trainer_id === 1) { %>
+                            <% return %>
+                        <% } else { %>
+                        <button type="submit">Delete</button>
+                        <% } %>
+                    </form>
                 </div>
             <% }) %>
         <% } %>
