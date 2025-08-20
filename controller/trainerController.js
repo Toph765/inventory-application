@@ -14,11 +14,20 @@ async function addNewTrainerPost(req, res) {
 
     await db.addTrainerToDb(trainerName);
 
-    res.redirect('/');
+    res.redirect('/trainer');
+};
+
+async function deleteTrainerPost(req, res) {
+    const { id } = req.params;
+
+    await db.deleteTrainer(id);
+
+    res.redirect('/trainer');
 };
 
 module.exports = {
     getAllTrainersGet,
     addNewTrainerGet,
     addNewTrainerPost,
+    deleteTrainerPost,
 }

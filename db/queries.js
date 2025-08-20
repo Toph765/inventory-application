@@ -82,6 +82,7 @@ async function getAllTrainerPokelist() {
     const allPokeList = trainers.map(async trainer => {
         const pokeList = await getPokeList(trainer.trainer_id);
         const trainerPokeList = {
+            trainer_id: trainer.trainer_id,
             trainer: trainer.name,
             pokeList: pokeList,
         };
@@ -94,7 +95,7 @@ async function getAllTrainerPokelist() {
 
 async function getPokeList(id) {
     const { rows } = await pool.query(`
-    SELECT DISTINCT pokemon, nickname, status.state FROM pokemon
+    SELECT DISTINCT pokemon_id, pokemon, nickname, status.state FROM pokemon
     INNER JOIN status ON pokemon.status_id = status.status_id
     INNER JOIN trainers ON pokemon.trainer_id = $1
     `, [id]);
@@ -115,6 +116,18 @@ async function deletePokemon(id) {
     `, [id]);
 }
 
+async function deleteTrainer(id) {
+    const pokeList = await getPokeList(id);
+
+    pokeList.forEach(async pokemon => {
+        await deletePokemon(pokemon.pokemon_id);
+    });
+
+    await pool.query(`
+        DELETE FROM trainers WHERE trainer_id = $1
+    `, [id]);
+};
+
 module.exports = {
     getAllPokemon,
     getAllTrainers,
@@ -124,4 +137,5 @@ module.exports = {
     getAllTrainerPokelist,
     addTrainerToDb,
     deletePokemon,
+    deleteTrainer,
 }
