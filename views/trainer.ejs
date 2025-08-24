@@ -3,6 +3,9 @@
         <title><%= title%></title>
     </head>
     <body>
+        <%- include('partials/navBar') %>
+        <h2>Trainers</h2>
+        <a href="/trainer/new">Add Trainer</a>
         <% if (locals.trainers) { %>
             <% trainers.map(trainer => { %>
                 <div>

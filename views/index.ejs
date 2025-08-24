@@ -3,6 +3,9 @@
         <title><%= title %></title>
     </head>
     <body>
+        <%- include('partials/navBar') %>
+        <h2>Pokemon</h2>
+        <a href="/new">Add Pokemon</a>
         <% if (locals.allPokemon) { %>
             <% allPokemon.map(pokemon => { %>
                 <div>
