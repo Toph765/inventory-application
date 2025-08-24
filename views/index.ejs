@@ -16,6 +16,9 @@
                     <p>Nickname: <%= pokemon.nickname %></p>
                     <p>Trainer: <%= pokemon.trainer_name%></p>
                     <p>Status: <%= pokemon.state %></p>
+                    <form action="/<%= pokemon.pokemon_id %>/edit" method="get">
+                        <button type="submit">Edit</button>
+                    </form>
                     <form action="/<%= pokemon.pokemon_id %>/delete" method="post">
                         <button type="submit">Delete</button>
                     </form>
