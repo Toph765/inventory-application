@@ -21,6 +21,15 @@ async function getAllPokemon() {
     return rows;
 };
 
+async function getPokemon(id) {
+    const { rows } = await pool.query(`
+        SELECT * FROM pokemon
+        WHERE pokemon_id = $1 
+    `, [id]);
+
+    return rows[0];
+}
+
 async function getAllTrainers() {
     const { rows } = await pool.query(`SELECT * FROM trainers`);
     
@@ -55,6 +64,38 @@ async function getTypeIdByType(type) {
     const typeList = await getAllTypes();
     const typeName = typeList.filter(item => item.type === type)[0];
     return typeName.type_id;
+}
+
+async function getTrainerNamebyId(id) {
+    const { rows } = await pool.query(`
+        SELECT name FROM trainers WHERE trainer_id = $1
+    `, [id]);
+
+    return rows[0].name;
+}
+
+async function getStatusById(id) {
+    const { rows } = await pool.query(`
+        SELECT state FROM status WHERE status_id = $1
+    `, [id]);
+
+    return rows[0].state;
+}
+
+async function getTypeById(id) {
+    const { rows } = await pool.query(`
+        SELECT type FROM types WHERE type_id = $1
+    `, [id]);
+
+    return rows[0].type;
+}
+
+async function getImgSrcById(id) {
+    const { rows } = await pool.query(`
+        SELECT img_src FROM pokemon WHERE pokemon_id = $1
+    `, [id]);
+
+    return rows[0].img_src;
 }
 
 async function addPokemontoDb(newPokemon) {
@@ -110,6 +151,34 @@ async function addTrainerToDb(name) {
     `, [name]);
 };
 
+async function updatePokemon(id, update) {
+    const trainerId = await getTrainerIdByName(update.trainer);
+    const statusId = await getStatusIdbyState(update.status);
+    const firstTypeId = await getTypeIdByType(update.type_one);
+    const secondTypeId = await getTypeIdByType(update.type_two);
+
+    await pool.query(`
+        UPDATE pokemon SET
+        pokemon = $1,
+        nickname = $2,
+        img_src = $3,
+        trainer_id = $4,
+        status_id = $5,
+        type_id_one = $6,
+        type_id_two = $7
+        WHERE pokemon_id = $8
+    `, [
+        update.pokemon,
+        update.nickname,
+        update.img_src,
+        trainerId,
+        statusId,
+        firstTypeId,
+        secondTypeId,
+        id
+    ])
+}
+
 async function deletePokemon(id) {
     await pool.query(`
         DELETE FROM pokemon WHERE pokemon_id = $1
@@ -130,12 +199,18 @@ async function deleteTrainer(id) {
 
 module.exports = {
     getAllPokemon,
+    getPokemon,
     getAllTrainers,
     getAllTypes,
     getAllStatus,
+    getTrainerNamebyId,
+    getStatusById,
+    getTypeById,
+    getImgSrcById,
     addPokemontoDb,
     getAllTrainerPokelist,
     addTrainerToDb,
+    updatePokemon,
     deletePokemon,
     deleteTrainer,
 }
