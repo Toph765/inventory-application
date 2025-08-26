@@ -1,11 +1,11 @@
 <html>
     <head>
         <title><%= title%></title>
+        <script src="/js/openModal.js" defer></script>
     </head>
     <body>
         <%- include('partials/navBar') %>
-        <h2>Trainers</h2>
-        <a href="/trainer/new">Add Trainer</a>
+        <button class="addTrainerBtn">Add Trainer</button>
         <% if (locals.trainers) { %>
             <% trainers.map(trainer => { %>
                 <div>
@@ -25,5 +25,12 @@
                 </div>
             <% }) %>
         <% } %>
+        <dialog class="dialog">
+            <form action="/trainer/new" method="post">
+                <label for="trainerName">Name: </label>
+                <input type="text" name="trainerName" id="trainerName">
+                <button type="submit" class="submitBtn">Submit</button>
+            </form>
+        <dialog>
     </body>
 </html>
