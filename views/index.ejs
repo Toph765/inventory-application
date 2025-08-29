@@ -6,6 +6,7 @@
         <%- include('partials/navBar') %>
         <h2>Pokemon</h2>
         <a href="/new">Add Pokemon</a>
+        <%- include('partials/sideBar', {status: status, filter: filter}) %>
         <% if (locals.allPokemon) { %>
             <% allPokemon.map(pokemon => { %>
                 <div>
