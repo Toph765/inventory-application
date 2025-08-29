@@ -1,10 +1,15 @@
 const db = require('../db/queries');
 
 async function getAllPokemonGet(req, res) {
-    const allPokemon = await db.getAllPokemon();
+    const status = await db.getAllStatus();
+    const filter = req.query.status;
+    const allPokemon = await db.getAllPokemon(filter);
+
     res.render('index', {
         title: 'Home',
         allPokemon: allPokemon,
+        status: status,
+        filter: filter,
     });
 };
 

@@ -1,6 +1,16 @@
 const pool = require('./pool');
 
-async function getAllPokemon() {
+async function getAllPokemon(filter = null) {
+    let condition = '';
+
+    if (filter) {
+        if (Array.isArray(filter)) {
+            const status = filter.map(filter => "'" + filter + "'").join(', ');
+            condition = `WHERE state IN (${status})`;
+        }
+        else condition = `WHERE state IN ('${filter}')`
+    }
+
     const { rows } = await pool.query(`
     SELECT 
         pokemon.pokemon_id,
@@ -16,6 +26,7 @@ async function getAllPokemon() {
     LEFT JOIN status ON pokemon.status_id = status.status_id
     LEFT JOIN types AS first_typing ON pokemon.type_id_one = first_typing.type_id
     LEFT JOIN types AS second_typing ON pokemon.type_id_two = second_typing.type_id
+    ${condition}
     ORDER BY pokemon_id`);
     
     return rows;
