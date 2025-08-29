@@ -1,0 +1,13 @@
+<div>
+    <% if (locals.status) { %>
+        <form action="/" method="get">
+            <% status.map(status => { %>
+                <div>
+                    <input type="checkbox" name="status" id="<%= status.state %>" value="<%= status.state %>" <%= locals.filter && locals.filter.includes(status.state) ? 'checked' : '' %>>
+                    <label for="<%= status.state%>"><%= status.state %></label>
+                </div>
+            <% }) %>
+            <button type="submit">Apply Filter</button>
+        </form>
+    <% } %>
+</div>
