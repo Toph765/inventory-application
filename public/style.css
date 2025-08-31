@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    /* border: 2px solid green; */
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.navBar {
+    border: 2px solid black;
+    padding: 1.2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.main {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.sideBar {
+    border: 2px solid pink;
+    padding: 1.2rem;
+}
+
+.sideBar h2 {
+    text-align: center;
+    padding-bottom: 0.8rem;
+}
+
+.checkbox {
+    padding-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.filterBtn {
+    width: 100px;
+    border-style: none;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+}
+
+.topBanner {
+    display: flex;
+    border: 2px solid plum;
+    align-items: center;
+    gap: 0.2rem;
+    padding-bottom: 0.4rem;
+}
+
+.rightMain {
+    width: 100%;
+    padding: 0 0.8rem 0.8rem 0.4rem;
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    border: 2px solid maroon;
+    gap: 0.6rem;
+}
+
+.card {
+    border: 2px solid purple;
+    text-align: center;
+}
+
+.card > img {
+    width: 250px;
+    height: 300px;
+    object-fit: contain;
+    border: 2px solid orange;
+    margin-top: 30px;
+}
+
+.cardHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 30px 0 30px;
+}
+
+.cardBtns {
+    display: flex;
+    gap: 0.6rem;
+    padding: 8px 0 30px 30px;
+}
+
+.submitBtn,
+.deleteBtn {
+    border-style: none;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+}
