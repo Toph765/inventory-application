@@ -1,33 +1,51 @@
 <html>
     <head>
         <title><%= title %></title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/typeColors.css">
     </head>
     <body>
         <%- include('partials/navBar') %>
-        <h2>Pokemon</h2>
-        <a href="/new">Add Pokemon</a>
-        <%- include('partials/sideBar', {status: status, filter: filter}) %>
-        <% if (locals.allPokemon) { %>
-            <% allPokemon.map(pokemon => { %>
-                <div>
-                    <img src="<%= pokemon.img_src%>" alt="pokemon img">
-                    <p><%= pokemon.pokemon %></p>
-                    <% if (pokemon.second_type === 'none') { %>
-                        <p><%= pokemon.first_type %></p>
-                    <% } else { %>
-                        <p><%= pokemon.first_type %> <%= pokemon.second_type%></p>
-                    <% } %>
-                    <p>Nickname: <%= pokemon.nickname %></p>
-                    <p>Trainer: <%= pokemon.trainer_name%></p>
-                    <p>Status: <%= pokemon.state %></p>
-                    <form action="/<%= pokemon.pokemon_id %>/edit" method="get">
-                        <button type="submit">Edit</button>
-                    </form>
-                    <form action="/<%= pokemon.pokemon_id %>/delete" method="post">
-                        <button type="submit">Delete</button>
-                    </form>
+        <div class="main">
+            <%- include('partials/sideBar', {status: status, filter: filter}) %>
+            <div class="rightMain">
+                <div class="topBanner">
+                    <h2>Pokemon</h2>
+                    <a href="/new">Add Pokemon</a>
                 </div>
-            <% }) %>
-        <% } %>
+                <div class="cardsContainer">
+                    <% if (locals.allPokemon) { %>
+                        <% allPokemon.map(pokemon => { %>
+                            <div class="card">
+                                <img src="<%= pokemon.img_src%>" alt="pokemon img">
+                                <div class="cardDetails">
+                                    <div class="cardHeader">
+                                        <p><%= pokemon.pokemon %></p>
+                                        <div class="type">
+                                            <% if (pokemon.second_type === 'none') { %>
+                                                <p><span class="<%= pokemon.first_type %>"><%= pokemon.first_type %></span></p>
+                                            <% } else { %>
+                                                <p><span class="<%= pokemon.first_type %>"><%= pokemon.first_type %></span> <span class="<%= pokemon.second_type %>"><%= pokemon.second_type%></span></p>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <p>Nickname: <%= pokemon.nickname %></p>
+                                    <p>Trainer: <%= pokemon.trainer_name%></p>
+                                    <p>Status: <span class="<%= pokemon.state %>"><%= pokemon.state %></span></p>
+                                </div>
+                                <div class="cardBtns">
+                                    <form action="/<%= pokemon.pokemon_id %>/edit" method="get">
+                                        <button type="submit" class="submitBtn">Edit</button>
+                                    </form>
+                                    <form action="/<%= pokemon.pokemon_id %>/delete" method="post">
+                                        <button type="submit" class="deleteBtn">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

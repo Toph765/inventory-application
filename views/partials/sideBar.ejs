@@ -1,13 +1,14 @@
-<div>
+<div class="sideBar">
+    <h2>Filter</h2>
     <% if (locals.status) { %>
         <form action="/" method="get">
             <% status.map(status => { %>
-                <div>
+                <div class="checkbox">
                     <input type="checkbox" name="status" id="<%= status.state %>" value="<%= status.state %>" <%= locals.filter && locals.filter.includes(status.state) ? 'checked' : '' %>>
                     <label for="<%= status.state%>"><%= status.state %></label>
                 </div>
             <% }) %>
-            <button type="submit">Apply Filter</button>
+            <button type="submit" class="filterBtn">Apply Filter</button>
         </form>
     <% } %>
 </div>
