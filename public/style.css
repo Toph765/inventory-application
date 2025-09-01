@@ -8,7 +8,7 @@ a {
     text-decoration: none;
 }
 
-ul {
+.navLinks {
     display: flex;
     list-style-type: none;
     /* border: 2px solid green; */
@@ -105,8 +105,66 @@ ul {
 }
 
 .submitBtn,
-.deleteBtn {
+.deleteBtn,
+.addTrainerBtn,
+.delTrainerBtn {
     border-style: none;
     padding: 0.4rem 1rem;
     border-radius: 1rem;
+}
+
+/* TRAINER ROUTE */
+.trainerTopbanner {
+    display: flex;
+    border: 2px solid plum;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+}
+
+.trainerMain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-items: center;
+    align-items: start;
+
+    padding: 0.8rem;
+}
+
+.trainerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid peachpuff;
+    padding: 0.8rem;
+}
+
+.trainerName {
+    padding-bottom: 1rem;
+}
+
+.pokeList {
+    padding: 1rem;
+}
+
+.pokeList li {
+    padding-bottom: 0.4rem;
+}
+
+.delTrainerBtn {
+    margin-top: 1rem;
+}
+
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 1.2rem;
+}
+
+dialog  form  input {
+    height: 1.8rem;
+    padding: 0.2rem;
 }
