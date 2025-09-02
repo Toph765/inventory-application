@@ -1,43 +1,62 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/style.css">
         <title><%= title %></title>
     </head>
     <body>
         <%- include('partials/navBar') %>
-        <form action="/<%= pokemon_id %>/edit" method="post" enctype="multipart/form-data">
-            <label for="pokemon">Pokemon: </label>
-            <input type="text" name="pokemon" id="pokemon"  value="<%= pokemon %>" required>
-            <label for="nickname">Nickname: </label>
-            <input type="text" name="nickname" id="nickname" value="<%= nickname %>" required>
-            <label for="trainer">Trainer: </label>
-            <select name="trainer" id="trainer">
-                <% trainers.map((trainer) => { %>
-                        <option value="<%= trainer.name %>" <%= trainer.name === currentTrainer ? 'selected' : '' %> ><%= trainer.name %></option>
-                <% }) %>
-            </select>
-            <label for="status">Status: </label>
-            <select name="status" id="status">
-                <% status.map(status => { %>
-                        <option value="<%= status.state %>" <%= status.state === currentStatus ? 'selected' : '' %> ><%= status.state %></option>
-                <% }) %>
-            </select>
-            <label for="type_one">First Type: </label>
-            <select name="type_one" id="type_one">
-                <% types.map(type => { %>
-                    <% if (type.type === 'none') return %>
-                        <option value="<%= type.type %>" <%= type.type === currentFirstType ? 'selected' : '' %> ><%= type.type %></option>
-                <% }) %>
-            </select>
-            <label for="type_two">Second Type: </label>
-            <select name="type_two" id="type_two">
-                <% types.map(type => { %>
-                        <option value="<%= type.type %>" <%= type.type === currentSecondType ? 'selected' : '' %> ><%= type.type %></option>
-                <% }) %>
-            </select>
-            <img src="<%= img_src %>" alt="<%= pokemon %>">
-            <label for="image_src">Image: </label>
-            <input type="file" name="image_src" id="image_src">
-            <button type="submit">Submit</button>
+        <form class="editPokeForm" action="/<%= pokemon_id %>/edit" method="post" enctype="multipart/form-data">
+            <div class="editPokeFormCont">
+                <div>
+                    <label for="pokemon">Pokemon: </label>
+                    <input type="text" name="pokemon" id="pokemon"  value="<%= pokemon %>" required>
+                </div>
+                <div>
+                    <label for="nickname">Nickname: </label>
+                    <input type="text" name="nickname" id="nickname" value="<%= nickname %>" required>
+                </div>
+                <div>
+                    <label for="trainer">Trainer: </label>
+                    <select name="trainer" id="trainer">
+                        <% trainers.map((trainer) => { %>
+                                <option value="<%= trainer.name %>" <%= trainer.name === currentTrainer ? 'selected' : '' %> ><%= trainer.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="status">Status: </label>
+                    <select name="status" id="status">
+                        <% status.map(status => { %>
+                                <option value="<%= status.state %>" <%= status.state === currentStatus ? 'selected' : '' %> ><%= status.state %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="type_one">First Type: </label>
+                    <select name="type_one" id="type_one">
+                        <% types.map(type => { %>
+                            <% if (type.type === 'none') return %>
+                                <option value="<%= type.type %>" <%= type.type === currentFirstType ? 'selected' : '' %> ><%= type.type %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="type_two">Second Type: </label>
+                    <select name="type_two" id="type_two">
+                        <% types.map(type => { %>
+                                <option value="<%= type.type %>" <%= type.type === currentSecondType ? 'selected' : '' %> ><%= type.type %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="editImg">
+                    <div>
+                        <label for="image_src">Image: </label>
+                        <input type="file" name="image_src" id="image_src">
+                    </div>
+                    <img class="imgPreview" src="<%= img_src %>" alt="<%= pokemon %>">
+                </div>
+                <button class="editPokeBtn" type="submit">Submit</button>
+            </div>
         </form>
     </body>
 </html>

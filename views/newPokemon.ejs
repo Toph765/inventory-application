@@ -1,42 +1,59 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/style.css">
         <title><%= title %></title>
     </head>
     <body>
         <%- include('partials/navBar') %>
-        <form action="/new" method="post" enctype="multipart/form-data">
-            <label for="pokemon">Pokemon: </label>
-            <input type="text" name="pokemon" id="pokemon" required>
-            <label for="nickname">Nickname: </label>
-            <input type="text" name="nickname" id="nickname required>
-            <label for="trainer">Trainer: </label>
-            <select name="trainer" id="trainer">
-                <% trainers.map(trainer => { %>
-                    <option value="<%= trainer.name %>"><%= trainer.name %></option>
-                <% }) %>
-            </select>
-            <label for="status">Status: </label>
-            <select name="status" id="status">
-                <% status.map(status => { %>
-                    <option value="<%= status.state %>"><%= status.state %></option>
-                <% }) %>
-            </select>
-            <label for="type_one">First Type: </label>
-            <select name="type_one" id="type_one">
-                <% types.map(type => { %>
-                    <% if (type.type === 'none') return %>
-                    <option value="<%= type.type %>"><%= type.type %></option>
-                <% }) %>
-            </select>
-            <label for="type_two">Second Type: </label>
-            <select name="type_two" id="type_two">
-                <% types.map(type => { %>
-                    <option value="<%= type.type %>"><%= type.type %></option>
-                <% }) %>
-            </select>
-            <label for="image_src">Image: </label>
-            <input type="file" name="image_src" id="image_src">
-            <button type="submit">Submit</button>
+        <form class="newPokemonForm" action="/new" method="post" enctype="multipart/form-data">
+            <div class="newPokeFormCont">
+                <div>
+                    <label for="pokemon">Pokemon: </label>
+                    <input type="text" name="pokemon" id="pokemon" required>
+                </div>
+                <div>
+                    <label for="nickname">Nickname: </label>
+                    <input type="text" name="nickname" id="nickname" required>
+                </div>
+                <div>
+                    <label for="trainer">Trainer: </label>
+                    <select name="trainer" id="trainer">
+                        <% trainers.map(trainer => { %>
+                            <option value="<%= trainer.name %>"><%= trainer.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="status">Status: </label>
+                    <select name="status" id="status">
+                        <% status.map(status => { %>
+                            <option value="<%= status.state %>"><%= status.state %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="type_one">First Type: </label>
+                    <select name="type_one" id="type_one">
+                        <% types.map(type => { %>
+                            <% if (type.type === 'none') return %>
+                            <option value="<%= type.type %>"><%= type.type %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="type_two">Second Type: </label>
+                    <select name="type_two" id="type_two">
+                        <% types.map(type => { %>
+                            <option value="<%= type.type %>"><%= type.type %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div>
+                    <label for="image_src">Image: </label>
+                    <input type="file" name="image_src" id="image_src">
+                </div>
+                <button class="newPokeBtn" type="submit">Submit</button>
+            </div>
         </form>
     </body>
 </html>
