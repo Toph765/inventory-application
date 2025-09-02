@@ -107,7 +107,9 @@ a {
 .submitBtn,
 .deleteBtn,
 .addTrainerBtn,
-.delTrainerBtn {
+.delTrainerBtn,
+.newPokeBtn,
+.editPokeBtn {
     border-style: none;
     padding: 0.4rem 1rem;
     border-radius: 1rem;
@@ -164,7 +166,60 @@ dialog {
     padding: 1.2rem;
 }
 
-dialog  form  input {
+input,
+select {
     height: 1.8rem;
     padding: 0.2rem;
+}
+
+/*  NEW POKEMON FORM */
+
+.newPokemonForm,
+.editPokeForm {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 2px solid hotpink;
+    padding: 0.8rem;
+}
+
+.newPokeFormCont,
+.editPokeFormCont {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+
+    padding: 0.8rem;
+    border: 2px solid firebrick;
+}
+
+.newPokeFormCont > div,
+.editPokeFormCont > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.newPokeFormCont > div > input,
+.editPokeFormCont > div > input,
+select {
+    width: 500px;
+}
+
+.editImg {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    border: 2px solid indianred;
+}
+
+.imgPreview {
+    width: 60%;
+    height: 250px;
+    object-fit: contain;
 }
