@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+:root {
+    --main-font: "Anta", sans-serif;
+    --sub-font: "Quantico", sans-serif;
 }
 
 body {
@@ -12,7 +19,14 @@ a {
     text-decoration: none;
 }
 
+h1 {
+  font-family: var(--main-font);
+  font-size: 2rem;
+  color: #FCECDD;
+}
+
 .navLinks {
+  font-family: var(--sub-font);
     display: flex;
     list-style-type: none;
     align-items: center;
@@ -42,6 +56,7 @@ a {
 }
 
 .sideBar {
+    font-family: var(--sub-font);
     background-color: #FB9E3A;
     padding: 1.2rem;
 }
@@ -59,6 +74,7 @@ a {
 }
 
 .filterBtn {
+    font-family: var(--sub-font);
     border-style: none;
     width: 120px;
     padding: 0.4rem 1rem;
@@ -72,7 +88,13 @@ a {
     padding-bottom: 0.6rem;
 }
 
+h2 {
+    font-family: var(--main-font);
+}
+
 .addPokeLink {
+    font-family: var(--sub-font);
+    color: black;
     background-color: whitesmoke;
     border: 2px solid #FED16A;
     padding: 0.4rem 1rem;
@@ -92,6 +114,7 @@ a {
 }
 
 .card {
+    font-family: var(--sub-font);
     background-color: #FED16A;
     text-align: center;
 }
@@ -114,7 +137,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 30px 0 30px;
+    padding: 20px 20px 0 20px;
 }
 
 .type,
@@ -131,7 +154,7 @@ a {
 .cardBtns {
     display: flex;
     gap: 0.6rem;
-    padding: 1.2rem 0 30px 30px;
+    padding: 1.2rem 0 30px 20px;
 }
 
 .submitBtn,
@@ -139,7 +162,9 @@ a {
 .addTrainerBtn,
 .delTrainerBtn,
 .newPokeBtn,
-.editPokeBtn {
+.editPokeBtn,
+.submitTrainerBtn {
+    font-family: var(--sub-font);
     background-color: whitesmoke;
     border-style: none;
     padding: 0.4rem 1rem;
@@ -160,10 +185,20 @@ button:hover,
 /* TRAINER ROUTE */
 .trainerTopbanner {
     display: flex;
-    border: 2px solid plum;
     align-items: center;
     gap: 0.8rem;
     padding: 0.8rem;
+}
+
+.addTrainerBtn,
+.submitTrainerBtn {
+    border: 2px solid #FED16A;
+}
+
+.addTrainerBtn:hover,
+.submitTrainerBtn:hover {
+    background-color: #E6521F;
+    border: 2px solid #E6521F;
 }
 
 .trainerMain {
@@ -176,6 +211,7 @@ button:hover,
 }
 
 .trainerCard {
+    font-family: var(--sub-font);
     background-color: #FED16A;
     display: flex;
     flex-direction: column;
@@ -184,6 +220,7 @@ button:hover,
 }
 
 .trainerName {
+    font-family: var(--main-font);
     padding-bottom: 1rem;
 }
 
@@ -204,6 +241,7 @@ button:hover,
 }
 
 dialog {
+    font-family: var(--sub-font);
     background-color: #FCECDD;
     position: absolute;
     top: 50%;
@@ -215,6 +253,7 @@ dialog {
 
 input,
 select {
+    font-family: var(--sub-font);
     height: 1.8rem;
     padding: 0.2rem;
 }
@@ -231,6 +270,7 @@ select {
 
 .newPokeFormCont,
 .editPokeFormCont {
+    font-family: var(--sub-font);
     background-color: #FED16A;
     width: 650px;
     display: flex;
