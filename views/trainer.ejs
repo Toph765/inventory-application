@@ -20,7 +20,7 @@
                             <h3 class="trainerName"><%= trainer.trainer %></h3>
                             <ul class="pokeList">
                                 <% trainer.pokeList.map(poke => { %>
-                                    <li><%= poke.pokemon %>  "<%= poke.nickname %>" - <span class="<%= poke.state %>"><%= poke.state %></span></li>
+                                    <li class="pokeStat"><%= poke.pokemon %>  "<%= poke.nickname %>" - <span class="<%= poke.state %> status"><%= poke.state %></span></li>
                                 <% }) %>
                             </ul>
                         </div>

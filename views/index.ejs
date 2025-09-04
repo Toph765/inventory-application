@@ -11,7 +11,7 @@
             <div class="rightMain">
                 <div class="topBanner">
                     <h2>Pokemon</h2>
-                    <a href="/new">Add Pokemon</a>
+                    <a href="/new" class="addPokeLink">Add Pokemon</a>
                 </div>
                 <div class="cardsContainer">
                     <% if (locals.allPokemon) { %>
@@ -23,15 +23,15 @@
                                         <p><%= pokemon.pokemon %></p>
                                         <div class="type">
                                             <% if (pokemon.second_type === 'none') { %>
-                                                <p><span class="<%= pokemon.first_type %>"><%= pokemon.first_type %></span></p>
+                                                <p><span class="<%= pokemon.first_type %> type"><%= pokemon.first_type %></span></p>
                                             <% } else { %>
-                                                <p><span class="<%= pokemon.first_type %>"><%= pokemon.first_type %></span> <span class="<%= pokemon.second_type %>"><%= pokemon.second_type%></span></p>
+                                                <p><span class="<%= pokemon.first_type %> type"><%= pokemon.first_type %></span> <span class="<%= pokemon.second_type %> type"><%= pokemon.second_type%></span></p>
                                             <% } %>
                                         </div>
                                     </div>
                                     <p>Nickname: <%= pokemon.nickname %></p>
                                     <p>Trainer: <%= pokemon.trainer_name%></p>
-                                    <p>Status: <span class="<%= pokemon.state %>"><%= pokemon.state %></span></p>
+                                    <p class="statusCont">Status: <span class="<%= pokemon.state %> status"><%= pokemon.state %></span></p>
                                 </div>
                                 <div class="cardBtns">
                                     <form action="/<%= pokemon.pokemon_id %>/edit" method="get">
