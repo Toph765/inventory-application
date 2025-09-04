@@ -31,7 +31,7 @@ async function addNewPokemonPost(req, res) {
 
     const newPokemon = {
         pokemon: pokemon,
-        nickname: nickname,
+        nickname: nickname ? nickname : pokemon,
         img_src: req.file ? `/uploads/${req.file.filename}` : '/images/Substitute_artwork.png',
         trainer: trainer,
         status: status,
