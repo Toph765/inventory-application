@@ -6,7 +6,7 @@ async function getAllPokemonGet(req, res) {
     const allPokemon = await db.getAllPokemon(filter);
 
     res.render('index', {
-        title: 'Home',
+        title: 'PokeCenter',
         allPokemon: allPokemon,
         status: status,
         filter: filter,
