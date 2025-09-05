@@ -1,6 +1,10 @@
 const { Client } = require('pg');
 require('dotenv').config();
 
+const delTables = `
+    DROP TABLE IF EXISTS trainers, status, types, pokemon;
+`;
+
 const SQL = `
     CREATE TABLE IF NOT EXISTS trainers (
         trainer_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -57,6 +61,7 @@ async function main() {
         connectionString: process.env.DATABASE_URL,
     });
     await client.connect();
+    await client.query(delTables);
     await client.query(SQL);
     await client.end();
     console.log('done');
